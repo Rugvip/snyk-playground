@@ -12,4 +12,9 @@ ignore:
         reason: None Given
         expires: 2021-10-07T18:36:50.721Z
         created: 2021-09-07T18:36:50.726Z
+  SNYK-JS-BROWSERSLIST-1090194:
+    - '*':
+        reason: None Given
+        expires: 2021-10-07T18:36:50.721Z
+        created: 2021-09-07T18:36:50.726Z
 patch: {}
