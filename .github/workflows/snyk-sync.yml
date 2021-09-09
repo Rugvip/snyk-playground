@@ -14,6 +14,11 @@ jobs:
         uses: snyk/actions/node@master
         with:
           command: monitor
-          args: --yarn-workspaces --strict-out-of-sync=false --policy-path=.snyk --org=rugvip
+          args: >
+            --org=rugvip
+            --yarn-workspaces
+            --policy-path=.snyk
+            --strict-out-of-sync=false
+            --remote-repo-url=https://github.com/Rugvip/snyk-playground
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
