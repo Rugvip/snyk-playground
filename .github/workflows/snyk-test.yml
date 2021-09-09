@@ -1,0 +1,17 @@
+name: Sync Snyk
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Synchronize Snyk
+        uses: snyk/actions/node@master
+        with:
+          args: --yarn-workspaces --strict-out-of-sync=false --policy-path=.snyk --org=rugvip
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

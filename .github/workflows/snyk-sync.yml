@@ -1,14 +1,19 @@
+name: Sync Snyk
 
-name: Example workflow for Node using Snyk
-on: push
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
 jobs:
-  security:
+  sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
+      - uses: actions/checkout@v2
+      - name: Synchronize Snyk
         uses: snyk/actions/node@master
         with:
+          command: monitor
           args: --yarn-workspaces --strict-out-of-sync=false --policy-path=.snyk --org=rugvip
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
