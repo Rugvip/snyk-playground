@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Synchronize Snyk
         uses: snyk/actions/node@master
+        continue-on-error: true # To make sure that SARIF upload gets called
         with:
           command: monitor
           args: >
@@ -19,6 +20,11 @@ jobs:
             --yarn-workspaces
             --policy-path=.snyk
             --strict-out-of-sync=false
+            --sarif-file-output=snyk.sarif
             --remote-repo-url=https://github.com/Rugvip/snyk-playground
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk.sarif
