@@ -29,6 +29,7 @@ jobs:
           args: >
             --org=rugvip
             --yarn-workspaces
+            --policy-path=.snyk
             --strict-out-of-sync=false
             --sarif-file-output=snyk.sarif
         env:
