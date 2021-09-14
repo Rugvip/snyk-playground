@@ -37,9 +37,5 @@ jobs:
       - name: Upload report
         uses: github/codeql-action/upload-sarif@v1
         with:
-          sarif_file: snyk.sarif
-      - name: Upload report 2
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          category: category-2
+          category: test-cat
           sarif_file: snyk.sarif
